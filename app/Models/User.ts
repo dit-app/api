@@ -1,7 +1,16 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import {
+  column,
+  beforeSave,
+  BaseModel,
+  hasMany,
+  HasMany,
+  hasOne,
+  HasOne
+} from '@ioc:Adonis/Lucid/Orm'
 import { UserKey } from 'App/Models'
+import Diversity from './Diversity'
 
 // table.increments('id').primary()
 // table.string('name')
@@ -47,4 +56,7 @@ export default class User extends BaseModel {
 
   @hasMany(() => UserKey)
   public keys: HasMany<typeof UserKey>
+
+  @hasOne(() => Diversity)
+  public diversity: HasOne<typeof Diversity>
 }
