@@ -7,9 +7,6 @@ Route.put('/users/register/', 'Users/Register.update')
 Route.get('/user', 'Users/Main.show').middleware('auth')
 Route.put('/user', 'Users/Main.update').middleware('auth')
 
-Route.post('/forgot-password', 'Users/ForgotPassword.store')
-Route.put('/forgot-password', 'Users/ForgotPassword.update')
-
 Route.get('/user-register', async ({ view }) => {
   return view.render('emails/verify-email')
 })

@@ -9,9 +9,7 @@ import {
   hasOne,
   HasOne
 } from '@ioc:Adonis/Lucid/Orm'
-import { UserKey } from 'App/Models'
-import Diversity from './Diversity'
-
+import { UserKey, Social } from 'App/Models'
 // table.increments('id').primary()
 // table.string('name')
 // table.string('username').unique()
@@ -57,6 +55,6 @@ export default class User extends BaseModel {
   @hasMany(() => UserKey)
   public keys: HasMany<typeof UserKey>
 
-  @hasOne(() => Diversity)
-  public diversity: HasOne<typeof Diversity>
+  @hasOne(() => Social)
+  public social: HasOne<typeof Social>
 }
