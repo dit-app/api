@@ -1,16 +1,18 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Database from '@ioc:Adonis/Lucid/Database'
-import { User } from 'App/Models'
+
+import { UpdateValidator } from 'App/Validators/User/Main'
 export default class UserController {
   public async show({ auth }: HttpContextContract) {
     const user = auth.user!
+    user.load('socials')
     return user
   }
 
-  public async update({ auth }: HttpContextContract) {
-    const user = await Database.transaction(async (trx) => {
-      const user = new User()
-      user.useTransaction(trx)
-    })
+  public async update({ auth, request }: HttpContextContract) {
+    const data = await request.validate(UpdateValidator)
+    const user = auth.user!
+    user.merge(data)
+    await user.save()
+    return user
   }
 }

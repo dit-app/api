@@ -8,25 +8,25 @@ export default class SocialController {
     const { username } = request.qs()
     const user = (await User.findByOrFail('username', username)) || auth.user
 
-    await user.load('social')
+    await user.load('socials')
 
-    return user.social
+    return user.socials
   }
 
   public async store({ request, auth }: HttpContextContract) {
     const data = await request.validate(StoreValidator)
-    const social = await auth.user!.related('social').create(data)
+    const social = await auth.user!.related('socials').create(data)
     return social
   }
 
   public async update({ request, response, params, auth }: HttpContextContract) {
     const data = await request.validate(UpdateValidator)
     const social = await Social.findOrFail(params.id)
-    if (auth.user!.id !== social.userId) {
+    if (auth.user!.id !== social!.userId) {
       return response.unauthorized()
     }
 
-    await social.merge(data).save()
+    await social!.merge(data).save()
 
     return social
   }
