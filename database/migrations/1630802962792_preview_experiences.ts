@@ -1,16 +1,16 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Educations extends BaseSchema {
-  protected tableName = 'educations'
+export default class PreviewExperiences extends BaseSchema {
+  protected tableName = 'preview_experiences'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table.string('school')
-      table.string('degree')
-      table.string('start_date') //table.date('start_date')
-      table.string('end_date') //table.date('end_date')
+      table.string('company')
+      table.string('role')
       table.string('description')
+      table.string('start_date')
+      table.string('end_date')
       table
         .integer('user_id')
         .unsigned()

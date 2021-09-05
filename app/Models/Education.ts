@@ -10,7 +10,7 @@ import { User } from 'App/Models'
 //       table.integer('user_id')
 
 export default class Education extends BaseModel {
-  @column({ isPrimary: true })
+  @column({ isPrimary: true, serializeAs: null })
   public id: number
 
   @column()
@@ -28,7 +28,7 @@ export default class Education extends BaseModel {
   @column()
   public description: string
 
-  @column()
+  @column({ serializeAs: null })
   public userId: number
 
   @belongsTo(() => User)

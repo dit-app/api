@@ -12,7 +12,7 @@ import { User } from 'App/Models'
 //   .onUpdate('CASCADE')
 //   .onDelete('CASCADE')
 export default class Social extends BaseModel {
-  @column({ isPrimary: true })
+  @column({ isPrimary: true, serializeAs: null })
   public id: number
 
   @column()
@@ -24,7 +24,7 @@ export default class Social extends BaseModel {
   @column()
   public githubUrl: string
 
-  @column()
+  @column({ serializeAs: null })
   public userId: number
 
   @belongsTo(() => User)
