@@ -4,6 +4,7 @@ import { UpdateValidator } from 'App/Validators/User/Main'
 export default class UserController {
   public async show({ auth }: HttpContextContract) {
     const user = auth.user!
+    await user.load('avatar')
     await user.load('socials')
     await user.load('educations')
     await user.load('previewExperiences')
