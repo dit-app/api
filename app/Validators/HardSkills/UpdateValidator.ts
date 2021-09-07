@@ -10,5 +10,5 @@ export default class StoreValidator {
 		experienceYears: schema.number(),
   })
 
-  public messages = {}
+  public cacheKey = this.ctx.routeKey
 }

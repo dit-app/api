@@ -9,17 +9,7 @@ import {
   hasOne,
   HasOne
 } from '@ioc:Adonis/Lucid/Orm'
-import { UserKey, Social, Education, PreviewExperience, HardSkill } from 'App/Models'
-
-// table.increments('id').primary()
-// table.string('name')
-// table.string('username').unique()
-// table.string('email').notNullable().unique()
-// table.string('password', 180)
-// table.string('remember_me_token').nullable()
-
-// table.timestamp('created_at', { useTz: true }).notNullable()
-// table.timestamp('updated_at', { useTz: true }).notNullable()
+import { UserKey, Social, Education, PreviewExperience, HardSkill, SoftSkill } from 'App/Models'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -70,4 +60,8 @@ export default class User extends BaseModel {
 
   @hasMany(() => HardSkill)
   public hardSkills: HasMany<typeof HardSkill>
+
+  @hasMany(() => SoftSkill)
+  public softSkills: HasMany<typeof SoftSkill>
+
 }
