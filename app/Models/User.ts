@@ -1,17 +1,15 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
-import { UserKey } from 'App/Models'
-
-// table.increments('id').primary()
-// table.string('name')
-// table.string('username').unique()
-// table.string('email').notNullable().unique()
-// table.string('password', 180)
-// table.string('remember_me_token').nullable()
-
-// table.timestamp('created_at', { useTz: true }).notNullable()
-// table.timestamp('updated_at', { useTz: true }).notNullable()
+import {
+  column,
+  beforeSave,
+  BaseModel,
+  hasMany,
+  HasMany,
+  hasOne,
+  HasOne
+} from '@ioc:Adonis/Lucid/Orm'
+import { UserKey, Social, Education, PreviewExperience, HardSkill, SoftSkill, File } from 'App/Models'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -22,6 +20,9 @@ export default class User extends BaseModel {
 
   @column()
   public username: string
+
+  @column()
+  public bio: string
 
   @column()
   public email: string
@@ -47,4 +48,26 @@ export default class User extends BaseModel {
 
   @hasMany(() => UserKey)
   public keys: HasMany<typeof UserKey>
+
+  @hasOne(() => Social)
+  public socials: HasOne<typeof Social>
+
+  @hasMany(() => Education)
+  public educations: HasMany<typeof Education>
+
+  @hasMany(() => PreviewExperience)
+  public previewExperiences: HasMany<typeof PreviewExperience>
+
+  @hasMany(() => HardSkill)
+  public hardSkills: HasMany<typeof HardSkill>
+
+  @hasMany(() => SoftSkill)
+  public softSkills: HasMany<typeof SoftSkill>
+
+  @hasOne(() => File, {
+    foreignKey: 'ownerId',
+    onQuery: (query) => query.where('fileCategory', 'avatar')
+  })
+  public avatar: HasOne<typeof File>
+
 }

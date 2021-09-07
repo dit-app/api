@@ -1,2 +1,8 @@
 export { default as User } from './User'
 export { default as UserKey } from './UserKey'
+export { default as Social } from './Social'
+export { default as Education } from './Education'
+export { default as PreviewExperience } from './PreviewExperience'
+export { default as HardSkill } from './HardSkill'
+export { default as SoftSkill } from './SoftSkill'
+export { default as File } from './File'
