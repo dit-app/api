@@ -7,6 +7,7 @@ export default class UserController {
     await user.load('socials')
     await user.load('educations')
     await user.load('previewExperiences')
+    await user.load('hardSkills')
     return user
   }
 

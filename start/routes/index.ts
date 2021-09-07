@@ -5,6 +5,7 @@ import './forgot-password'
 import './social'
 import './education'
 import './preview-experience'
+import './hardskills'
 
 Route.get('/hello', () => {
   return 'Hello world'

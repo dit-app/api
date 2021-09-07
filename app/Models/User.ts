@@ -9,7 +9,7 @@ import {
   hasOne,
   HasOne
 } from '@ioc:Adonis/Lucid/Orm'
-import { UserKey, Social, Education, PreviewExperience } from 'App/Models'
+import { UserKey, Social, Education, PreviewExperience, HardSkill } from 'App/Models'
 
 // table.increments('id').primary()
 // table.string('name')
@@ -67,4 +67,7 @@ export default class User extends BaseModel {
 
   @hasMany(() => PreviewExperience)
   public previewExperiences: HasMany<typeof PreviewExperience>
+
+  @hasMany(() => HardSkill)
+  public hardSkills: HasMany<typeof HardSkill>
 }
