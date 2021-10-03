@@ -1,17 +1,9 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { User } from 'App/Models'
 import { StoreValidator, UpdateValidator } from 'App/Validators/Social'
 import { Social } from 'App/Models'
+import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class SocialController {
-  public async index({ request, auth }: HttpContextContract) {
-    const { username } = request.qs()
-    const user = (await User.findByOrFail('username', username)) || auth.user
-
-    await user.load('socials')
-
-    return user.socials
-  }
 
   public async store({ request, auth }: HttpContextContract) {
     const data = await request.validate(StoreValidator)
@@ -19,16 +11,24 @@ export default class SocialController {
     return social
   }
 
-  public async update({ request, response, params, auth }: HttpContextContract) {
-    const data = await request.validate(UpdateValidator)
-    const social = await Social.findOrFail(params.id)
-    if (auth.user!.id !== social!.userId) {
-      return response.unauthorized()
-    }
+  public async update({ request, auth }: HttpContextContract) {
+    await Database.transaction(async (trx) => {
+      const data = await request.validate(UpdateValidator)
+      const user = auth.user!.useTransaction(trx)
 
-    await social!.merge(data).save()
+      const searchPayload = {}
+      const savePayload = {
+        linkedinUrl: data.linkedinUrl,
+        githubUrl: data.githubUrl,
+        twitterUrl: data.twitterUrl,
+      }
 
-    return social
+      const socials = await user.related('socials').firstOrCreate(searchPayload, savePayload)
+
+      await socials!.merge(data).save()
+
+      return socials
+    })
   }
 
   public async destroy({}: HttpContextContract) {}

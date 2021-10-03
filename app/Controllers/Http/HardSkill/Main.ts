@@ -1,17 +1,11 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { HardSkill } from 'App/Models'
-import { StoreValidator, UpdateValidator } from 'App/Validators/HardSkills'
+import { UpdateValidator } from 'App/Validators/HardSkills'
 
 export default class HardSkillController {
-  public async store ({ request, auth }: HttpContextContract) {
-    const data = await request.validate(StoreValidator)
-    const hardSkill = await auth.user!.related('hardSkills').create(data)
-    return hardSkill
-  }
 
-  public async update ({ request, auth, params, response }: HttpContextContract) {
+  public async update ({ request, auth, response }: HttpContextContract) {
     const data = await request.validate(UpdateValidator)
-    const hardSkill = await HardSkill.findOrFail(params.id)
+    const hardSkill = await auth.user!.related('hardSkills').firstOrCreate(data)
     if (auth.user!.id !== hardSkill!.userId) {
       return response.unauthorized()
     }

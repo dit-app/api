@@ -20,10 +20,10 @@ export default class Education extends BaseModel {
   public degree: string
 
   @column()
-  public startDate: DateTime
+  public startDate: string
 
   @column()
-  public endDate: DateTime
+  public endDate: string
 
   @column()
   public description: string

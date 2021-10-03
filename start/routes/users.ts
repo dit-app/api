@@ -22,20 +22,14 @@ Route.put('/user/avatar', 'Users/Avatar.update').middleware('auth')
 Route.delete('/user/avatar', 'Users/Avatar.destroy').middleware('auth')
 
 /* Education */
-Route.get('/user/education', 'Education/Main.index').middleware('auth')
-Route.post('/user/education', 'Education/Main.store').middleware('auth')
-Route.put('/user/education/:id', 'Education/Main.update').middleware('auth')
+Route.put('/user/education/', 'Education/Main.update').middleware('auth')
 
 /* Experience */
-Route.post('/user/preview-experience', 'PreviewExperience/Main.store').middleware('auth')
-Route.put('/user/preview-experience/:id', 'PreviewExperience/Main.update').middleware('auth')
+Route.put('/user/preview-experience', 'PreviewExperience/Main.update').middleware('auth')
 
 /* Social */
-Route.post('/user/social', 'Social/Main.store').middleware('auth')
-Route.put('/user/social/:id', 'Social/Main.update').middleware('auth')
+Route.put('/user/social', 'Social/Main.update').middleware('auth')
 
 /* Skills */
-Route.post('/user/hard-skill', 'HardSkill/Main.store').middleware('auth')
-Route.put('/user/hard-skill/:id', 'HardSkill/Main.update').middleware('auth')
-Route.post('/user/soft-skill', 'SoftSkill/Main.store').middleware('auth')
-Route.put('/user/soft-skill/:id', 'SoftSkill/Main.update').middleware('auth')
+Route.put('/user/hard-skill/', 'HardSkill/Main.update').middleware('auth')
+Route.put('/user/soft-skill/', 'SoftSkill/Main.update').middleware('auth')

@@ -8,8 +8,8 @@ export default class UpdateValidator {
 	public schema = schema.create({
 		school: schema.string({ trim: true}),
 		degree: schema.string({ trim: true}),
-		startDate: schema.date({ format: 'DD/MM/YYYY'}),
-		endDate: schema.date({ format: 'DD/MM/YYYY'}),
+		startDate: schema.string({ trim: true }),
+		endDate: schema.string({ trim: true }),
 		description: schema.string({ trim: true}),
   })
 
