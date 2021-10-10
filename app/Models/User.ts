@@ -22,6 +22,9 @@ export default class User extends BaseModel {
   public username: string
 
   @column()
+  public role: string
+
+  @column()
   public bio: string
 
   @column()

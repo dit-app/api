@@ -31,5 +31,7 @@ Route.put('/user/preview-experience', 'PreviewExperience/Main.update').middlewar
 Route.put('/user/social', 'Social/Main.update').middleware('auth')
 
 /* Skills */
+Route.post('/user/hard-skill/', 'HardSkill/Main.store').middleware('auth')
 Route.put('/user/hard-skill/', 'HardSkill/Main.update').middleware('auth')
+Route.post('/user/soft-skill/', 'SoftSkill/Main.store').middleware('auth')
 Route.put('/user/soft-skill/', 'SoftSkill/Main.update').middleware('auth')

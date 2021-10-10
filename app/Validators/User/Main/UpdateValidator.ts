@@ -6,6 +6,8 @@ export default class UpdateValidator {
 
   public schema = schema.create({
     name: schema.string.optional({ trim: true }),
+    role: schema.string.optional({ trim: true }),
+    username: schema.string.optional({ trim: true }),
 		email: schema.string.optional({ trim: true}),
 		bio: schema.string.optional({ trim: true}),
   })
