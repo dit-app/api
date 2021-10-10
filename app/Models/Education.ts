@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon'
 import { BaseModel, column, BelongsTo, belongsTo } from '@ioc:Adonis/Lucid/Orm'
 import { User } from 'App/Models'
 //        table.increments('id').primary()

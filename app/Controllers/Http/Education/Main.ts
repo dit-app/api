@@ -1,5 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { Education, User } from 'App/Models/'
+import { User } from 'App/Models/'
 import { StoreValidator, UpdateValidator } from 'App/Validators/Education'
 
 export default class EducationController {

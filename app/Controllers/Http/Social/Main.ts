@@ -1,6 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { StoreValidator, UpdateValidator } from 'App/Validators/Social'
-import { Social } from 'App/Models'
 import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class SocialController {
