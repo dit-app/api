@@ -22,6 +22,7 @@ Route.put('/user/avatar', 'Users/Avatar.update').middleware('auth')
 Route.delete('/user/avatar', 'Users/Avatar.destroy').middleware('auth')
 
 /* Education */
+Route.post('/user/education/', 'Education/Main.store').middleware('auth')
 Route.put('/user/education/', 'Education/Main.update').middleware('auth')
 
 /* Experience */

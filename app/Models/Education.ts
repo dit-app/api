@@ -9,7 +9,7 @@ import { User } from 'App/Models'
 //       table.integer('user_id')
 
 export default class Education extends BaseModel {
-  @column({ isPrimary: true, serializeAs: null })
+  @column({ isPrimary: true })
   public id: number
 
   @column()

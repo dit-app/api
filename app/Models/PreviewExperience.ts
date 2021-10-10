@@ -2,7 +2,7 @@ import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
 import { User } from 'App/Models'
 
 export default class PreviewExperience extends BaseModel {
-  @column({ isPrimary: true, serializeAs: null })
+  @column({ isPrimary: true })
   public id: number
 
   @column()
