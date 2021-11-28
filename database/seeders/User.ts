@@ -6,8 +6,8 @@ export default class UserSeeder extends BaseSeeder {
     // Write your database queries inside the run method
     await User.create({
       name: 'DIT',
-      email: 'hi@dit.com',
-      password: 'secret',
+      email: 'admin',
+      password: '$ secret $ dit',
       username: 'dit'
     })
   }
